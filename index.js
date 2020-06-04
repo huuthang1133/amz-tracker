@@ -9,7 +9,7 @@ const URL = "https://www.amazon.com/dp/B007TOHIJQ";
 
 
 var job = new CronJob(
-	'* * * * *',
+	'* */5 * * *',
 	function() {
 		axios.get(URL).then((res)=> {
 			const html = res.data;
