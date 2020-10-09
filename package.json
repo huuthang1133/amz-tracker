@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "cron": "^1.8.2",
+    "dotenv": "^8.2.0",
     "node-cron": "^2.0.3",
     "nodemailer": "^6.4.8",
     "request": "^2.88.2"

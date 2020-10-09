@@ -2,6 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const CronJob = require('cron').CronJob;
 const nodemailer = require('nodemailer');
+require('dotenv').config()
 
 
 const URL = "https://www.amazon.com/dp/B007TOHIJQ"; 
@@ -9,7 +10,7 @@ const URL = "https://www.amazon.com/dp/B007TOHIJQ";
 
 
 var job = new CronJob(
-	'* */5 * * *',
+	'5 * * * * *',
 	function() {
 		axios.get(URL).then((res)=> {
 			const html = res.data;
@@ -34,14 +35,14 @@ async function sendMail(){
 	    port: 587,
 	    secure: false, // true for 465, false for other ports
 	    auth: {
-	      user: "kidhv1412@gmail.com", // generated ethereal user
-	      pass: "wgockmvpdxlbxlmb", // generated ethereal password
+	      user: process.env.USER, // generated ethereal user
+	      pass: process.env.PASS, // generated ethereal password
 	    },
 	  });	
   // send mail with defined transport object
 	await transporter.sendMail({
-		from: `"Huu Thang" "kidhv1412@gmail.com"`, // sender address
-		to: "vohuuthang9595@gmail.com", // list of receivers
+		from: `"Huu Thang" ${process.env.USER}`, // sender address
+		to: process.env.EMAIL, // list of receivers
 		subject: "Price change", // Subject line
 		text: "Alert!!! Price changed", // plain text body
 	});
